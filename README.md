@@ -1,65 +1,144 @@
 <<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+# Booking System (Laravel + Filament 3)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+A clean, junior-friendly booking platform built with **Laravel 12** and **Filament 3.3**. It helps teams manage **customers, services, bookings, and booking statuses** from a modern admin panel.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+> This README is designed to be recruiter‑friendly: quick to skim, with clear install steps, features, and roadmap.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ✨ Key Features (Current)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* **Customers** management (Users)
+* **Services** management
+* **Bookings** CRUD with status workflow: `Pending → Confirmed → Completed → Cancelled`
+* **Filament 3 Admin** resources for all entities
+* **Smart tables** with search, filters, and sorting
+* **Basic dashboard** and quick metrics (via Filament widgets)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🗺️ Roadmap (Upcoming)
 
-## Laravel Sponsors
+* **Payments Integration**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+  * Link bookings to payments
+  * Payment model & relations (Booking ↔ Payment)
+* **Notifications**
 
-### Premium Partners
+  * Email notifications on confirmation/cancellation
+  * Real‑time notifications (broadcast)
+* **Reports & Exports**
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+  * Download **PDF / Excel** reports (Laravel Excel, DomPDF)
+  * Booking statistics by status & date range
+* **UI & UX Improvements**
 
-## Contributing
+  * Polished Filament theme, icons, and layout
+  * **Localization (multi‑language)**
+* **Roles & Permissions**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+  * Role‑based access control (Filament Shield / Spatie Permissions)
+* **Automated Tests**
 
-## Code of Conduct
+  * Feature & unit tests for core flows
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 🧰 Tech Stack
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* **Backend:** PHP 8.2+, Laravel 12
+* **Admin:** Filament 3.3 (Resources, Widgets, Tables, Forms)
+* **Database:** MySQL (or any Laravel‑supported driver)
+* **Auth:** Laravel default (ready to extend to Sanctum/Passport if API added)
+* **Exports:** Laravel Excel (XLSX/CSV), DomPDF (PDF) *(planned)*
+* **Notifications:** Mail, Broadcasting *(planned)*
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# Booking-System-with-Filament-
->>>>>>> 84b9e0cec4d1ab583549e7da9dba5a7b0308cab3
+## ✅ Requirements
+
+* **PHP** 8.2+
+* **Composer**
+* **Node.js & NPM** (for assets if needed)
+* **Database**: MySQL (recommended)
+
+---
+
+
+### 🔑 Admin (Filament) Access
+
+* Admin Panel: `/admin`
+* Default admin (if seeded):
+
+  * **Email:** `admin@example.com`
+  * **Password:** `password`
+
+> If you don’t use seeders, create a user and grant the necessary role/permissions as described below.
+
+---
+
+## 🧱 Domain Model
+
+**Entities**
+
+* **User** (customer/admin)
+* **Service** (bookable item)
+* **Booking** (belongs to User, belongs to Service)
+* *(Planned)* **Payment** (belongs to Booking)
+
+**Suggested Booking Statuses**
+
+* `pending`, `confirmed`, `completed`, `cancelled`
+
+**High‑level ERD (text)**
+
+```
+User (id, name, email, ...)
+Service (id, name, price, duration, ...)
+Booking (id, user_id, service_id, scheduled_at, status, notes, ...)
+Payment (id, booking_id, amount, method, status, paid_at, ...)   # planned
+```
+
+---
+
+## 🧩 Filament Resources
+
+* `UserResource` — manage customers & admins
+* `ServiceResource` — manage services (price/duration)
+* `BookingResource` — create, edit, and transition statuses
+* *(Planned)* `PaymentResource` — record and review payments
+
+Each resource includes:
+
+* Table: search, filters (by status/date), sorting, bulk actions
+* Form: validated inputs, relations (user/service), status select
+* Actions: view, edit, delete; custom actions for status changes
+
+---
+
+## 📊 Reports & Exports *(planned)*
+
+* **Excel/CSV:** via Laravel Excel (`app/Exports/*`)
+* **PDF:** via DomPDF (printable booking summary, daily report)
+* **Stats:** Filament widgets for counts by status & date range
+
+---
+
+## 🔔 Notifications *(planned)*
+
+* **Mail:** booking confirmation/cancellation
+* **Broadcast:** real‑time updates for admins (Echo/Pusher compatible)
+
+---
+
+## 🔐 Roles & Permissions *(planned)*
+
+* Use **Spatie/laravel-permission**
+* Roles: `Admin`, `Staff`, `Viewer`
+* Restrict Filament resources/actions per role
+
+
+
