@@ -3,10 +3,8 @@
 
 # Booking System (Laravel + Filament 3)
 
-A clean, junior-friendly booking platform built with **Laravel 12** and **Filament 3.3**. It helps teams manage **customers, services, bookings, and booking statuses** from a modern admin panel.
-
-> This README is designed to be recruiter‑friendly: quick to skim, with clear install steps, features, and roadmap.
-
+## Project Description
+The Booking System is a web application built using the Laravel framework. It is designed to manage bookings for customers and services. The system provides an easy-to-use interface for managing customers, services, bookings, and booking statuses
 ---
 
 ## ✨ Key Features (Current)
